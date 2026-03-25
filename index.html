@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Transport Company</title>
+    <title>AC Service Company</title>
 
     <style>
         body {
             margin: 0;
             font-family: Arial;
+            background: #121212;
+            color: white;
         }
 
         header {
-            background: #0d47a1;
-            color: white;
-            padding: 15px;
+            background: #000;
+            padding: 20px;
             text-align: center;
         }
 
+        h1 {
+            color: #00e5ff;
+        }
+
         nav {
-            background: #1976d2;
-            padding: 10px;
             text-align: center;
+            padding: 10px;
+            background: #1e1e1e;
         }
 
         nav a {
             color: white;
-            margin: 15px;
+            margin: 10px;
             text-decoration: none;
-            font-weight: bold;
         }
 
         section {
@@ -35,114 +39,119 @@
         }
 
         .services {
-            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         .box {
-            margin: 20px;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
         }
 
-        footer {
-            background: #0d47a1;
-            color: white;
-            text-align: center;
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        input, textarea {
+            width: 250px;
             padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
         }
 
         button {
             padding: 10px 20px;
-            background: #ff9800;
+            background: #00e5ff;
             border: none;
-            color: white;
             cursor: pointer;
         }
 
-        input, textarea {
+        footer {
+            background: black;
+            text-align: center;
             padding: 10px;
-            width: 250px;
-            margin: 10px;
-        }
-
-        /* WhatsApp Button */
-        .whatsapp {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: green;
-            color: white;
-            padding: 15px;
-            border-radius: 50%;
-            text-decoration: none;
         }
     </style>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <script>
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // yahan apni key daalni hai
+        })();
+
+        function sendMail(event) {
+            event.preventDefault();
+
+            emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",{
+                from_name: document.getElementById("name").value,
+                message: document.getElementById("message").value,
+                reply_to: document.getElementById("email").value,
+            }).then(function(){
+                alert("Complaint Sent Successfully ✅");
+            }, function(error){
+                alert("Error: " + JSON.stringify(error));
+            });
+        }
+    </script>
+
 </head>
 
 <body>
 
 <header>
-    <h1>ABC Transport Company 🚚</h1>
-    <p>Fast & Safe Delivery Services</p>
+    <h1>Cool Air AC Service ❄️</h1>
+    <p>Fast AC Repair & Service</p>
 </header>
 
 <nav>
     <a href="#">Home</a>
     <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="#">Complaint</a>
 </nav>
 
 <section>
-    <h2>Welcome to Our Company</h2>
-    <p>We provide reliable transport services across India.</p>
-    <button onclick="alert('Booking Coming Soon!')">Book Now</button>
+    <h2>Welcome</h2>
+    <p>We provide professional AC repair and maintenance services.</p>
 </section>
 
 <section class="services">
-    <h2>Our Services</h2>
-
     <div class="box">
-        <h3>🚛 Goods Transport</h3>
-        <p>Safe and fast goods delivery.</p>
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
+        <h3>AC Repair</h3>
     </div>
 
     <div class="box">
-        <h3>📦 Logistics</h3>
-        <p>Complete logistics solutions.</p>
+        <img src="https://images.unsplash.com/photo-1581091870622-2f2c9a5f1c4d">
+        <h3>Installation</h3>
     </div>
 
     <div class="box">
-        <h3>🏠 Home Shifting</h3>
-        <p>Easy and secure shifting service.</p>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+        <h3>Gas Filling</h3>
     </div>
 </section>
 
 <section>
-    <h2>Contact Us</h2>
+    <h2>Register Complaint</h2>
 
-    <form>
-        <input type="text" placeholder="Your Name"><br>
-        <input type="email" placeholder="Your Email"><br>
-        <textarea placeholder="Your Message"></textarea><br>
-        <button type="submit">Send</button>
+    <form onsubmit="sendMail(event)">
+        <input type="text" id="name" placeholder="Your Name" required><br>
+        <input type="email" id="email" placeholder="Your Email" required><br>
+        <textarea id="message" placeholder="Your Complaint" required></textarea><br>
+        <button type="submit">Send Complaint</button>
     </form>
-
-    <p>📞 Phone: 8279196146</p>
-    <p>📧 Email: 2025anshuchoudhary@gmail.com</p>
-</section>
-
-<section>
-    <h2>Our Location</h2>
-
-    <iframe src="https://maps.google.com/maps?q=Delhi&t=&z=13&ie=UTF8&iwloc=&output=embed"
-        width="80%" height="300" style="border:0;">
-    </iframe>
 </section>
 
 <footer>
-    <p>© 2026 Transport Company</p>
+    <p>© 2026 AC Service Company</p>
 </footer>
-
-<!-- WhatsApp Button -->
-<a class="whatsapp" href="https://wa.me/919876543210" target="_blank">💬</a>
 
 </body>
 </html>
