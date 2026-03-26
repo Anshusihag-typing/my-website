@@ -135,6 +135,17 @@
 
 <footer>
     © 2026 AC Service Company | All Rights Reserved
+<!-- Complaint Form -->
+<div style="padding:20px; text-align:center;">
+    <h2>Register Complaint</h2>
+
+    <input type="text" id="name" placeholder="Your Name"><br><br>
+    <input type="text" id="phone" placeholder="Your Phone"><br><br>
+    <textarea id="complaint" placeholder="Your Complaint"></textarea><br><br>
+
+    <button onclick="sendWhatsApp()">WhatsApp</button>
+    <button onclick="sendEmail()">Email</button>
+</div>
 </footer>
 
 <!-- Your HTML content above -->
@@ -167,6 +178,42 @@ function showService(type) {
 </script>
 
 </body>
+    <script>
+let userLocation = "Location not found";
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        userLocation = "https://www.google.com/maps?q=" + position.coords.latitude + "," + position.coords.longitude;
+    });
+}
+
+function sendWhatsApp() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let complaint = document.getElementById("complaint").value;
+
+    let message = "Name: " + name + "%0A"
+                + "Phone: " + phone + "%0A"
+                + "Complaint: " + complaint + "%0A"
+                + "Location: " + userLocation;
+
+    window.open("https://wa.me/919876543210?text=" + message, "_blank");
+}
+
+function sendEmail() {
+    let name = document.getElementById("name").value;
+    let phone = document.getElementById("phone").value;
+    let complaint = document.getElementById("complaint").value;
+
+    let subject = "AC Complaint";
+    let body = "Name: " + name + "%0A"
+             + "Phone: " + phone + "%0A"
+             + "Complaint: " + complaint + "%0A"
+             + "Location: " + userLocation;
+
+    window.location.href = "mailto:your@email.com?subject=" + subject + "&body=" + body;
+}
+</script>
 </html>
 </body>
 </html>
