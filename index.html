@@ -106,30 +106,29 @@
 </div>
 
 <!-- Services -->
+    <div id="service-details" style="text-align:center; padding:20px;">
+    <h2>Select a service to see details</h2>
+</div>
 <div class="service-container">
 
-    <div class="service-box">
+    <div class="service-box" onclick="showService('repair')">
         <h2>AC Repair</h2>
-        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" alt="AC Repair">
-        <p>Expert AC repair service by trained technicians.</p>
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952">
     </div>
 
-    <div class="service-box">
+    <div class="service-box" onclick="showService('install')">
         <h2>AC Installation</h2>
-        <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41" alt="AC Installation">
-        <p>Safe and professional AC installation at your home.</p>
+        <img src="https://images.unsplash.com/photo-1590650153855-d9e808231d41">
     </div>
 
-    <div class="service-box">
+    <div class="service-box" onclick="showService('service')">
         <h2>AC Service</h2>
-        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4" alt="AC Service">
-        <p>Complete AC cleaning and water service for better cooling.</p>
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4">
     </div>
 
-    <div class="service-box">
+    <div class="service-box" onclick="showService('gas')">
         <h2>Gas Filling</h2>
-        <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1" alt="Gas Filling">
-        <p>Accurate gas refilling for efficient AC performance.</p>
+        <img src="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1">
     </div>
 
 </div>
@@ -138,5 +137,36 @@
     © 2026 AC Service Company | All Rights Reserved
 </footer>
 
+<!-- Your HTML content above -->
+
+<div id="service-details"></div>
+
+<!-- ✅ JavaScript goes here -->
+<script>
+function showService(type) {
+    let content = "";
+
+    if(type === "repair") {
+        content = "<h2>AC Repair</h2><p>We fix cooling issues, noise problems, and all AC faults.</p>";
+    }
+
+    else if(type === "install") {
+        content = "<h2>AC Installation</h2><p>Professional AC installation with proper setup.</p>";
+    }
+
+    else if(type === "service") {
+        content = "<h2>AC Service</h2><p>Complete cleaning using water pressure.</p>";
+    }
+
+    else if(type === "gas") {
+        content = "<h2>Gas Filling</h2><p>Accurate gas refill for better cooling.</p>";
+    }
+
+    document.getElementById("service-details").innerHTML = content;
+}
+</script>
+
+</body>
+</html>
 </body>
 </html>
